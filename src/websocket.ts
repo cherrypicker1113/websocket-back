@@ -1,11 +1,13 @@
 import * as express from 'express';
 import expressws from 'express-ws';
+import ChatWebsocket from './chat/route/ChatWebsocket';
 import SampleWebsocket from './sample/route/SampleWebsocket';
 import SampleWebsocket2 from './sample/route/SampleWebsocket2';
 
 export default (app: express.Application) => {
-    const {app: newApp} = expressws(app);
+    const {app: expressWsApp} = expressws(app);
 
-    SampleWebsocket(newApp);
-    SampleWebsocket2(newApp);
+    SampleWebsocket(expressWsApp);
+    SampleWebsocket2(expressWsApp);
+    ChatWebsocket(expressWsApp);
 };
